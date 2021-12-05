@@ -26,6 +26,6 @@ class LoginForm(FlaskForm):
 
 class CommentForm(FlaskForm):
     comment = CKEditorField("Comment", validators=[DataRequired()])
-    sumbit = SubmitField("Submit Comment")
+    submit = SubmitField("Submit Comment")
 
 
