@@ -148,7 +148,7 @@ def show_post(post_id):
         else:
             flash("You need to login or register to comment")
             return redirect(url_for("login"))
-    return render_template("post.html", post=requested_post, logged_in=current_user.is_authenticated, form=comment_form, comments=comments, user_id=current_user.id)
+    return render_template("post.html", post=requested_post, logged_in=current_user.is_authenticated, form=comment_form, comments=comments, user_id=current_user.get_id())
 
 
 @app.route("/about")
@@ -211,6 +211,7 @@ def delete_post(post_id):
     db.session.delete(post_to_delete)
     db.session.commit()
     return redirect(url_for('get_all_posts'))
+
 
 @app.route("/delete_comment/<int:post_id>/<int:comment_id>")
 def delete_comment(post_id, comment_id):
